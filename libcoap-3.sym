@@ -287,3 +287,5 @@ coap_write_block_opt
 coap_ws_is_supported
 coap_ws_set_host_request
 coap_wss_is_supported
+coap_endpoint_get_fd
+coap_context_has_oscore

@@ -26,6 +26,14 @@
 #include <sys/timerfd.h>
 #endif /* COAP_EPOLL_SUPPORT */
 
+int coap_endpoint_get_fd(const coap_endpoint_t *endpoint) {
+    if (!endpoint) return -1; // Invalid argument check
+
+    // Assuming `sock` is the structure member holding socket information
+    // and `fd` is the member of `sock` holding the file descriptor.
+    return endpoint->sock.fd;
+}
+
 coap_fixed_point_t
 coap_multi_fixed_fixed(coap_fixed_point_t fp1, coap_fixed_point_t fp2) {
   coap_fixed_point_t res;
@@ -1934,4 +1942,6 @@ coap_session_set_no_observe_cancel(coap_session_t *session) {
   session->no_observe_cancel = 1;
 }
 #endif /* COAP_CLIENT_SUPPORT */
+
+
 #endif  /* COAP_SESSION_C_ */

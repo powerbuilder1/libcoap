@@ -321,6 +321,20 @@ coap_get_session_server_psk_hint(const coap_session_t *session) {
   return NULL;
 }
 
+int coap_context_has_oscore(coap_context_t* context) {
+    if (context->p_osc_ctx == NULL) {
+        return 0;
+    }
+
+    printf("HI from libcoap\n");
+
+    if (context->p_osc_ctx->master_secret != NULL && context->p_osc_ctx->master_secret->s != NULL) {
+        return 1;
+    }
+
+    return 0;
+}
+
 int
 coap_context_set_psk(coap_context_t *ctx,
                      const char *hint,
